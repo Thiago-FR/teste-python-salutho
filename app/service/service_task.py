@@ -12,3 +12,6 @@ def create_task(taks):
 
 def update_task(id, task):
   model_task.update_task(int(id), task)
+
+def delete_task(id):
+  model_task.delete_task(int(id))

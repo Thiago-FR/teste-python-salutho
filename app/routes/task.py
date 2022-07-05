@@ -20,7 +20,7 @@ def list_task():
 def edit_taks(id):
   return controller_task.update_task(id)
 
-@task.route('/delete')
-def delete_task():
-  return 'Delete Taks'
+@task.route('/delete/<id>', methods=["DELETE"])
+def delete_task(id):
+  return controller_task.delete_task(id)
 

@@ -21,7 +21,6 @@ def create_task():
   return jsonify({ "message": result }), 201
 
 def update_task(id):
-  print(id, 'id')
   username = request.json["username"]
   task = request.json["task"]
   status = request.json["status"]
@@ -32,4 +31,9 @@ def update_task(id):
     "status": status,
   })
 
-  return jsonify({ "message": "Update True" }), 201
+  return jsonify({ "message": "Update True" }), 200
+
+def delete_task(id):
+  service_task.delete_task(id)
+
+  return jsonify({ "message": "Delete True" }), 200

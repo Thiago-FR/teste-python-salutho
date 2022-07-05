@@ -14,4 +14,8 @@ def create_task(taks):
 
 def update_task(id, task):
   get_collection = mongo.db.users
-  get_collection.find_one_and_update({ "_id": int(id) }, { "$set": task })
+  get_collection.find_one_and_update({ "_id": id }, { "$set": task })
+
+def delete_task(id):
+  get_collection = mongo.db.users
+  get_collection.find_one_and_delete({ "_id": id })
