@@ -1,4 +1,5 @@
 from ..model import model_task
+import datetime
 
 
 def find_all_task():
@@ -7,8 +8,8 @@ def find_all_task():
     return result
 
 
-def create_task(username, task, status):
-    if username == '' or task == '' or status == '':
+def create_task(responsible, task, status):
+    if responsible == '' or task == '' or status == '':
         raise ValueError("Todos os campos devem ser preenchidos")
 
     get_all_taks = model_task.find_all_task()
@@ -22,17 +23,18 @@ def create_task(username, task, status):
 
     format_task = {
           "_id": new_id,
-          "username": username,
+          "responsible": responsible,
           "task": task,
           "status": status,
+          "date": datetime.datetime.now(),
         }
     result = model_task.create_task(format_task)
 
     return result
 
 
-def update_task(id, username, task, status):
-    if username == '' or task == '' or status == '':
+def update_task(id, responsible, task, status):
+    if responsible == '' or task == '' or status == '':
         raise ValueError("Todos os campos devem ser preenchidos|400")
 
     get_task = model_task.find_one_task(int(id))
@@ -42,7 +44,7 @@ def update_task(id, username, task, status):
 
     format_task = {
           "_id": 1,
-          "username": username,
+          "responsible": responsible,
           "task": task,
           "status": status,
         }

@@ -3,22 +3,24 @@ from ..controller import controller_task
 
 task = Blueprint("task", __name__)
 
+LIST_URL = '/api/todo-list'
 
-@task.route('/', methods=["GET"])
+
+@task.route(LIST_URL, methods=["GET"])
 def index():
     return controller_task.find_all_task()
 
 
-@task.route('/insert', methods=["POST"])
+@task.route(LIST_URL, methods=["POST"])
 def list_task():
     return controller_task.create_task()
 
 
-@task.route('/edit/<id>', methods=["PUT"])
+@task.route(f'{LIST_URL}/<id>', methods=["PUT"])
 def edit_taks(id):
     return controller_task.update_task(id)
 
 
-@task.route('/delete/<id>', methods=["DELETE"])
+@task.route(f'{LIST_URL}/<id>', methods=["DELETE"])
 def delete_task(id):
     return controller_task.delete_task(id)

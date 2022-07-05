@@ -6,17 +6,17 @@ from ..service import service_task
 def find_all_task():
     result = service_task.find_all_task()
 
-    return jsonify({"message": result}), 200
+    return jsonify(result), 200
 
 
 def create_task():
     try:
-        username = request.json["username"]
+        responsible = request.json["responsible"]
         task = request.json["task"]
         status = request.json["status"]
 
         result = service_task.create_task(
-          username,
+          responsible,
           task,
           status,
         )
@@ -32,13 +32,13 @@ def create_task():
 
 def update_task(id):
     try:
-        username = request.json["username"]
+        responsible = request.json["responsible"]
         task = request.json["task"]
         status = request.json["status"]
 
         service_task.update_task(
           id,
-          username,
+          responsible,
           task,
           status,
         )
