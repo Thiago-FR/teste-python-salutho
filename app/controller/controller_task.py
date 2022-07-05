@@ -19,3 +19,17 @@ def create_task():
   })
 
   return jsonify({ "message": result }), 201
+
+def update_task(id):
+  print(id, 'id')
+  username = request.json["username"]
+  task = request.json["task"]
+  status = request.json["status"]
+
+  service_task.update_task(id, {
+    "username": username,
+    "task": task,
+    "status": status,
+  })
+
+  return jsonify({ "message": "Update True" }), 201

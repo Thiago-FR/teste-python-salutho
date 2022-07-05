@@ -9,3 +9,6 @@ def create_task(taks):
   result = model_task.create_task(taks)
 
   return result
+
+def update_task(id, task):
+  model_task.update_task(int(id), task)

@@ -11,3 +11,7 @@ def create_task(taks):
   result = get_collection.insert_one(taks).inserted_id
 
   return result
+
+def update_task(id, task):
+  get_collection = mongo.db.users
+  get_collection.find_one_and_update({ "_id": int(id) }, { "$set": task })

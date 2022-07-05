@@ -16,9 +16,9 @@ def index():
 def list_task():
   return controller_task.create_task()
 
-@task.route('/edit')
-def edit_taks():
-  return 'Edit Taks'
+@task.route('/edit/<id>', methods=["PUT"])
+def edit_taks(id):
+  return controller_task.update_task(id)
 
 @task.route('/delete')
 def delete_task():
