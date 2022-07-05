@@ -8,6 +8,13 @@ def find_all_task():
     return result
 
 
+def find_one_task(id):
+    get_collection = mongo.db.users
+    result = get_collection.find_one({"_id": id})
+
+    return result
+
+
 def create_task(taks):
     get_collection = mongo.db.users
     result = get_collection.insert_one(taks).inserted_id
