@@ -1,8 +1,11 @@
 from flask import Flask
-from routes import routes
+from .routes.task import task
+from .config import database
 
-def create_app():
+def create_app(config_object="app.config.settings"):
   app = Flask(__name__)
-  app.register_blueprint(routes)
+  app.config.from_object(config_object)
+  app.register_blueprint(task)
+  database.init_app(app)
 
   return app
