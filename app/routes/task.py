@@ -1,9 +1,10 @@
+from crypt import methods
 from flask import Blueprint
 from ..controller import controller_task
 
 task = Blueprint("task", __name__)
 
-@task.route('/')
+@task.route('/', methods=["GET"])
 def index():
   return controller_task.find_all_task()
   # userCollection = mongo.db.users
@@ -11,9 +12,9 @@ def index():
   # result = list(userCollection.find())
   # userCollection.insert_one(user)
 
-@task.route('/insert')
+@task.route('/insert', methods=["POST"])
 def list_task():
-  return "Insert Taks"
+  return controller_task.create_task()
 
 @task.route('/edit')
 def edit_taks():
