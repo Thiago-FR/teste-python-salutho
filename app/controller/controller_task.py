@@ -1,39 +1,43 @@
 from flask import jsonify, request
 from ..service import service_task
 
-def find_all_task():
-  result = service_task.find_all_task()
 
-  return jsonify({ "message": result }), 200
+def find_all_task():
+    result = service_task.find_all_task()
+
+    return jsonify({"message": result}), 200
+
 
 def create_task():
-  username = request.json["username"]
-  task = request.json["task"]
-  status = request.json["status"]
+    username = request.json["username"]
+    task = request.json["task"]
+    status = request.json["status"]
 
-  result = service_task.create_task({
-    "_id": 1,
-    "username": username,
-    "task": task,
-    "status": status,
-  })
+    result = service_task.create_task({
+      "_id": 1,
+      "username": username,
+      "task": task,
+      "status": status,
+    })
 
-  return jsonify({ "message": result }), 201
+    return jsonify({"message": result}), 201
+
 
 def update_task(id):
-  username = request.json["username"]
-  task = request.json["task"]
-  status = request.json["status"]
+    username = request.json["username"]
+    task = request.json["task"]
+    status = request.json["status"]
 
-  service_task.update_task(id, {
-    "username": username,
-    "task": task,
-    "status": status,
-  })
+    service_task.update_task(id, {
+      "username": username,
+      "task": task,
+      "status": status,
+    })
 
-  return jsonify({ "message": "Update True" }), 200
+    return jsonify({"message": "Update True"}), 200
+
 
 def delete_task(id):
-  service_task.delete_task(id)
+    service_task.delete_task(id)
 
-  return jsonify({ "message": "Delete True" }), 200
+    return jsonify({"message": "Delete True"}), 200
