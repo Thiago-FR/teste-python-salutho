@@ -1,0 +1,13 @@
+version: '3.6'
+
+services:
+  backend:
+    build:
+      context: .
+    container_name: app_backend
+    environment:
+      - FLASK_APP=app/app.py
+      - FLASK_ENV=development
+      - MONGO_URI=mongodb+srv://admin:UKYq5HUncAvNQIIl@cluster0.hgpd8.mongodb.net/saluthodb?retryWrites=true&w=majority
+    ports:
+      - 5000:5000
