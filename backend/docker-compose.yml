@@ -1,17 +1,9 @@
 version: '3.6'
+
 services:
-  frontend:
-    build: ./front-end
-    container_name: app_frontend
-    depends_on:
-      - backend
-    environment:
-      REACT_APP_HOST: "http://localhost:5000"
-    ports:
-      - 3000:3000
   backend:
     build:
-      context: ./backend
+      context: .
     container_name: app_backend
     environment:
       - FLASK_APP=app/app.py

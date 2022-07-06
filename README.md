@@ -14,6 +14,9 @@
 - [Para testar o projeto](#testar-o-projeto)
   - [Rodar API Local](#via-local)
   - [Rodar API por docker](#via-docker)
+  - [Rodar API FULLSTACK por docker](#via-docker-fullstack)
+- [Testes desenvolvidos](#tdd)
+  - [Testes](#tdd-1)
 - [Endpoint's](#endpoint)
   - [Para criar Tarefa POST](#task-post)
   - [Para buscar Tarefas GET](#task-get)
@@ -59,10 +62,23 @@ MONGO_URI="mongodb://localhost:27017/db"
 1. Clone o repositório:
   * `https://github.com/Thiago-FR/teste-python-salutho.git`.
   * Entre na pasta do repositório que você acabou de clonar
+  * **Entre na pasta backend**
 
 ### Rodar API por docker <a name="via-docker"></a>
 
 1. API via Docker [**É Necessário ter o docker-compose v1.29 instalado!**]
+  * `docker-compose up -d --build`
+
+2. Ao final da containerização você pode checar o container **app_backend** :
+  * `docker ps`
+
+3. Para descer os container basta rodar:
+  * `docker-compose down --remove-orphans`
+
+### Rodar API FULLSTACK por docker <a name="via-docker-fullstack"></a>
+
+1. API via Docker [**É Necessário ter o docker-compose v1.29 instalado!**]
+  * Na raiz do projeto rode o comando:
   * `docker-compose up -d --build`
 
 2. Ao final da containerização você pode checar o container **app_backend** :
@@ -83,6 +99,17 @@ MONGO_URI="mongodb://localhost:27017/db"
   * `flask run`
 
 Obs: Este projeto utiliza variável de ambiente veja a sessação - [Conexão com o Banco](#conexao-db)
+
+---
+
+## Testes desenvolvidos: <a name="tdd"></a>
+
+Foi realizado alguns teste unitários na camada Model e Service.
+
+### Testes <a name="tdd-1"></a>
+
+1. Após instalar as dependências rode o comando:
+  * `pytest tests/ -v`
 
 ---
 
