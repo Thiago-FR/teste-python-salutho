@@ -8,7 +8,7 @@ function TbodyNotEdit({ row, contextTable }) {
 
   const { setId, setTask, setResponsible, setStatus, handleDelete } = contextTable;
 
-  function editItem({ _id, task, responsible, status }) {
+  function editItem({ _id, task, description: responsible, status }) {
     setIsEditItem({ edited: true, indexOf: _id });
     setId(_id);
     setTask(task);
@@ -22,7 +22,7 @@ function TbodyNotEdit({ row, contextTable }) {
       <td>{ row.task }</td>
       <td>{ row.date.substr(0, 10).split('-').reverse().join('/') }</td>
       <td>{ row.status }</td>
-      <td>{ row.responsible }</td>
+      <td>{ row.description }</td>
       <td>
         <button
           className="btn btn-outline-primary"

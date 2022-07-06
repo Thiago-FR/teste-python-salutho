@@ -8,8 +8,8 @@ def find_all_task(model_task, mongo):
     return result
 
 
-def create_task(model_task, mongo, responsible, task, status):
-    if responsible == '' or task == '' or status == '':
+def create_task(model_task, mongo, description, task, status):
+    if description == '' or task == '' or status == '':
         raise ValueError("Todos os campos devem ser preenchidos")
 
     get_all_taks = model_task.find_all_task(mongo)
@@ -23,7 +23,7 @@ def create_task(model_task, mongo, responsible, task, status):
 
     format_task = {
           "_id": new_id,
-          "responsible": responsible,
+          "description": description,
           "task": task,
           "status": status,
           "date": datetime.datetime.now(),
@@ -34,8 +34,8 @@ def create_task(model_task, mongo, responsible, task, status):
     return format_task
 
 
-def update_task(model_task, mongo, id, responsible, task, status):
-    if responsible == '' or task == '' or status == '':
+def update_task(model_task, mongo, id, description, task, status):
+    if description == '' or task == '' or status == '':
         raise ValueError("Todos os campos devem ser preenchidos|400")
 
     get_task = model_task.find_one_task(mongo, int(id))
@@ -45,7 +45,7 @@ def update_task(model_task, mongo, id, responsible, task, status):
 
     format_task = {
           "_id": 1,
-          "responsible": responsible,
+          "description": description,
           "task": task,
           "status": status,
         }

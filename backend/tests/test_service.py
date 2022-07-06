@@ -11,27 +11,27 @@ def test_service_find_all_task():
 
 def test_service_create_task_fail():
     with pytest.raises(ValueError):
-        responsible = 'Teste'
+        description = 'Teste'
         task = 'Teste'
         status = ''
-        create_task(mocks_service, mocks, responsible, task, status)
+        create_task(mocks_service, mocks, description, task, status)
 
     with pytest.raises(ValueError):
-        responsible = 'Teste'
+        description = 'Teste'
         task = ''
         status = 'Teste'
-        create_task(mocks_service, mocks, responsible, task, status)
+        create_task(mocks_service, mocks, description, task, status)
 
     with pytest.raises(ValueError):
-        responsible = ''
+        description = ''
         task = 'Teste'
         status = 'Teste'
-        create_task(mocks_service, mocks, responsible, task, status)
+        create_task(mocks_service, mocks, description, task, status)
 
 
 def test_service_create_task():
-    responsible = 'Teste'
+    description = 'Teste'
     task = 'Teste'
     status = 'Teste'
-    result = create_task(mocks_service, mocks, responsible, task, status)
+    result = create_task(mocks_service, mocks, description, task, status)
     assert result["_id"] == find_all_task(mocks_service, mocks)[0]["_id"] + 1

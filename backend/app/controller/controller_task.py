@@ -12,14 +12,14 @@ def find_all_task(service_task):
 
 def create_task(service_task):
     try:
-        responsible = request.json["responsible"]
+        description = request.json["description"]
         task = request.json["task"]
         status = request.json["status"]
 
         result = service_task.create_task(
           model_task,
           mongo.db.users,
-          responsible,
+          description,
           task,
           status,
         )
@@ -35,7 +35,7 @@ def create_task(service_task):
 
 def update_task(service_task, id):
     try:
-        responsible = request.json["responsible"]
+        description = request.json["description"]
         task = request.json["task"]
         status = request.json["status"]
 
@@ -43,7 +43,7 @@ def update_task(service_task, id):
           model_task,
           mongo.db.users,
           id,
-          responsible,
+          description,
           task,
           status,
         )

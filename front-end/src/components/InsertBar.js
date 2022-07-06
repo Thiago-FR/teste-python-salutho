@@ -8,7 +8,7 @@ function InsertBar() {
   const [responsible, setResponsible] = useState('');
 
   async function addList() {
-    await fetchCreate({ task, responsible, status: 'Pendente' });
+    await fetchCreate({ task, description: responsible, status: 'Pendente' });
     await fetchFindAll(setData);
     setTask('');
     setResponsible('');
@@ -28,7 +28,7 @@ function InsertBar() {
           className="form-control"
           type="text"
           value={ responsible }
-          placeholder="Responsável"
+          placeholder="Descrição"
           onChange={ ({ target }) => setResponsible(target.value)}
           data-testid="input-responsible"
         />

@@ -15,7 +15,7 @@ function Thead() {
   return (
     <thead>
       <tr>
-        <th scope="col" onClick={ () => setFilterByTask('id') }>
+        <th scope="col" onClick={ () => setFilterByTask('_id') }>
           <span className="cursor"># &#9660;</span>
         </th>
         <th scope="col" onClick={ () => setFilterByTask('task') }>
@@ -27,8 +27,8 @@ function Thead() {
         <th scope="col" onClick={ () => setFilterByTask('status') }>
           <span className="cursor">Status &#9660;</span>
         </th>
-        <th scope="col" onClick={ () => setFilterByTask('responsible') }>
-          <span className="cursor">Responsável &#9660;</span>
+        <th scope="col" onClick={ () => setFilterByTask('description') }>
+          <span className="cursor">Descrição &#9660;</span>
         </th>
         <th scope="col">
           Editar
