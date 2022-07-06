@@ -1,18 +1,18 @@
-from ..model import model_task
+# from ..config.database import mongo
 import datetime
 
 
-def find_all_task():
-    result = model_task.find_all_task()
+def find_all_task(model_task, mongo):
+    result = model_task.find_all_task(mongo)
 
     return result
 
 
-def create_task(responsible, task, status):
+def create_task(model_task, mongo, responsible, task, status):
     if responsible == '' or task == '' or status == '':
         raise ValueError("Todos os campos devem ser preenchidos")
 
-    get_all_taks = model_task.find_all_task()
+    get_all_taks = model_task.find_all_task(mongo)
 
     new_id = 0
 
@@ -28,16 +28,17 @@ def create_task(responsible, task, status):
           "status": status,
           "date": datetime.datetime.now(),
         }
-    result = model_task.create_task(format_task)
 
-    return result
+    model_task.create_task(mongo, format_task)
+
+    return format_task
 
 
-def update_task(id, responsible, task, status):
+def update_task(model_task, mongo, id, responsible, task, status):
     if responsible == '' or task == '' or status == '':
         raise ValueError("Todos os campos devem ser preenchidos|400")
 
-    get_task = model_task.find_one_task(int(id))
+    get_task = model_task.find_one_task(mongo, int(id))
 
     if get_task is None:
         raise ValueError("Id não encontrado|404")
@@ -49,13 +50,13 @@ def update_task(id, responsible, task, status):
           "status": status,
         }
 
-    model_task.update_task(int(id), format_task)
+    model_task.update_task(mongo, int(id), format_task)
 
 
-def delete_task(id):
-    get_task = model_task.find_one_task(int(id))
+def delete_task(model_task, mongo, id):
+    get_task = model_task.find_one_task(mongo, int(id))
 
     if get_task is None:
         raise ValueError("Id não encontrado|404")
 
-    model_task.delete_task(int(id))
+    model_task.delete_task(mongo, int(id))

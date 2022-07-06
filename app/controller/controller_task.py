@@ -1,21 +1,24 @@
 from flask import jsonify, request
 import pymongo
-from ..service import service_task
+from ..model import model_task
+from ..config.database import mongo
 
 
-def find_all_task():
-    result = service_task.find_all_task()
+def find_all_task(service_task):
+    result = service_task.find_all_task(model_task, mongo.db.users)
 
     return jsonify(result), 200
 
 
-def create_task():
+def create_task(service_task):
     try:
         responsible = request.json["responsible"]
         task = request.json["task"]
         status = request.json["status"]
 
         result = service_task.create_task(
+          model_task,
+          mongo.db.users,
           responsible,
           task,
           status,
@@ -30,13 +33,15 @@ def create_task():
         }), 401
 
 
-def update_task(id):
+def update_task(service_task, id):
     try:
         responsible = request.json["responsible"]
         task = request.json["task"]
         status = request.json["status"]
 
         service_task.update_task(
+          model_task,
+          mongo.db.users,
           id,
           responsible,
           task,
@@ -56,9 +61,9 @@ def update_task(id):
             }), code
 
 
-def delete_task(id):
+def delete_task(service_task, id):
     try:
-        service_task.delete_task(id)
+        service_task.delete_task(model_task, mongo.db.users, id)
 
         return jsonify({"message": "Delete True"}), 200
     except ValueError as error:
