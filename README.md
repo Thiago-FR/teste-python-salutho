@@ -22,7 +22,6 @@
   - [Para buscar Tarefas GET](#task-get)
   - [Para atualizar Tarefa por ID PUT](#task-put)
   - [Para deletar Tarefa por ID DELETE](#task-delte)
-- [Protótipo](#prototipo)
 
 ---
 
@@ -124,19 +123,21 @@ Body
   { 
     "task": "Teste",
     "status": "Pendente",
-    "responsible": "Teste"
+    "description": "Teste"
   }
  ```
 
 Reponse
 ```json
   {
-    "id": 1,
-    "task": "Teste",
-    "date": "2022-05-13T18:09:08.859Z",
-    "status": "Pendente",
-    "responsible": "Teste"
-  },
+    "message": {
+      "id": 1,
+      "task": "Teste",
+      "date": "Wed, 06 Jul 2022 11:44:22 GMT",
+      "status": "Pendente",
+      "description": "Teste"
+    }
+  }
 ```
 ---
 
@@ -149,9 +150,9 @@ Reponse
     {
       "id": 1,
       "task": "Teste",
-      "date": "2022-05-13T18:09:08.859Z",
+      "date": "Wed, 06 Jul 2022 11:44:22 GMT",
       "status": "Pendente",
-      "responsible": "Teste"
+      "description": "Teste"
     },
     ...
   ]
@@ -167,7 +168,7 @@ Body
   {
     "task": "Teste",
     "status": "Pronto",
-    "responsible": "Teste"
+    "description": "Teste"
   }
 ```
 ---
@@ -176,8 +177,4 @@ Body
 
 * Endpoint: `/api/todo-list/<id>`
 
----
-
-## Protótipo <a name="prototipo"></a>
-![Prototipo]()
 ---
