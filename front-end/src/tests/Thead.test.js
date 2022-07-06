@@ -17,7 +17,7 @@ describe('Test render Thead Component', () => {
     const theadTask = screen.getByText(/Tarefa/i);
     const theadDate = screen.getByText(/Data/i);
     const theadStatus = screen.getByText(/Status/i);
-    const theadResponsible = screen.getByText(/Responsável/i);
+    const theadResponsible = screen.getByText(/Descrição/i);
     const theadEdit = screen.getByText(/Editar/i);
 
     expect(theadHash).toBeInTheDocument();

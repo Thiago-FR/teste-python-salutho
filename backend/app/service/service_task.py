@@ -52,6 +52,8 @@ def update_task(model_task, mongo, id, description, task, status):
 
     model_task.update_task(mongo, int(id), format_task)
 
+    return format_task
+
 
 def delete_task(model_task, mongo, id):
     get_task = model_task.find_one_task(mongo, int(id))
@@ -60,3 +62,5 @@ def delete_task(model_task, mongo, id):
         raise ValueError("Id não encontrado|404")
 
     model_task.delete_task(mongo, int(id))
+
+    return True
