@@ -8,6 +8,6 @@ services:
     environment:
       - FLASK_APP=app/app.py
       - FLASK_ENV=development
-      - MONGO_URI=mongodb+srv://admin:UKYq5HUncAvNQIIl@cluster0.hgpd8.mongodb.net/saluthodb?retryWrites=true&w=majority
+      - MONGO_URI=
     ports:
       - 5000:5000
